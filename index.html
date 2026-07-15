@@ -75,7 +75,6 @@
       <a href="#sobre" class="nav-link hover:text-white transition">Sobre</a>
       <a href="#projetos" class="nav-link hover:text-white transition">Projetos</a>
       <a href="#stack" class="nav-link hover:text-white transition">Stack</a>
-      <a href="#educacao" class="nav-link hover:text-white transition">Educação</a>
       <a href="#faq" class="nav-link hover:text-white transition">FAQ</a>
     </nav>
     <div class="flex items-center gap-3">
@@ -86,7 +85,7 @@
   <nav id="mmenu" class="lg:hidden hidden border-t border-line px-6 py-4">
     <div class="flex flex-col gap-4 text-mute font-medium">
       <a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#projetos">Projetos</a>
-      <a href="#stack">Stack</a><a href="#educacao">Educação</a><a href="#faq">FAQ</a>
+      <a href="#stack">Stack</a><a href="#faq">FAQ</a>
       <a href="#contacto" class="px-5 py-2 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-lg text-center">Pedir Orçamento</a>
     </div>
   </nav>
@@ -225,9 +224,9 @@
         </div>
         <div class="relative pl-8 border-l-2 border-gold/40">
           <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gold"></span>
-          <div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-sora font-bold text-lg">Software Developer · GenAI · IT Projects</h4><span class="text-gold text-sm font-medium">2018 — 2026</span></div>
-          <p class="text-sky text-sm mb-2">CGI IT UK Ltd · Edimburgo, Escócia</p>
-          <p class="text-mute text-sm">Desenvolvimento de software e soluções GenAI em Java, Python e JavaScript, em ambiente empresarial internacional. Referência verificável (Martin Green, Business Development Director Scotland).</p>
+          <div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-sora font-bold text-lg">Software Developer · GenAI · IT Projects</h4><span class="text-gold text-sm font-medium">2018 — 2023</span></div>
+          <p class="text-sky text-sm mb-2">Ambiente empresarial internacional</p>
+          <p class="text-mute text-sm">Desenvolvimento de software e soluções GenAI em Java, Python e JavaScript, em projetos empresariais de larga escala num ambiente internacional.</p>
         </div>
       </div>
     </div>
@@ -262,24 +261,6 @@
       <p class="text-mute text-lg max-w-2xl mx-auto">Ferramentas modernas para construir soluções rápidas e escaláveis.</p>
     </div>
     <div id="stack-groups" class="space-y-14"></div>
-  </div>
-</section>
-
-<!-- EDUCAÇÃO -->
-<section id="educacao" class="relative py-24 bg-ink">
-  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-50"></div>
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-16 reveal">
-      <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4 border border-gold/30"><i class="fa-solid fa-graduation-cap mr-2"></i>Educação</span>
-      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Formação &amp; <span class="gold-text">Certificações</span></h2>
-      <p class="text-mute text-lg max-w-2xl mx-auto">Mestrados e certificações que sustentam o trabalho que entrego.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12" id="edu-grid"></div>
-    <div class="max-w-4xl mx-auto p-6 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line reveal">
-      <div class="flex items-center gap-3 mb-4"><i class="fa-solid fa-certificate text-gold text-xl"></i><h4 class="font-sora font-bold text-lg">12 Certificações Profissionais · With Distinction</h4></div>
-      <div class="flex flex-wrap gap-2" id="cert-tags"></div>
-      <p class="text-mute text-sm mt-4">freeCodeCamp · Coursera (Michigan, Duke, Meta, IBM, Google) · Udemy</p>
-    </div>
   </div>
 </section>
 
@@ -429,7 +410,6 @@
           <a href="#projetos" class="text-mute hover:text-sky transition">Projetos</a>
           <a href="#sobre" class="text-mute hover:text-sky transition">Sobre</a>
           <a href="#stack" class="text-mute hover:text-sky transition">Stack</a>
-          <a href="#educacao" class="text-mute hover:text-sky transition">Educação</a>
           <a href="#contacto" class="text-mute hover:text-sky transition">Contacto</a>
         </div>
       </div>
@@ -478,14 +458,8 @@
     {h:'Backend', i:'fa-server', c:'gold', items:[['fab fa-node-js','Node.js','#68a063'],['fab fa-python','Python','#f0d088'],['fab fa-java','Java','#e76f00'],['fas fa-database','PostgreSQL','#38bdf8'],['fas fa-leaf','MongoDB','#47a248'],['fas fa-diagram-project','GraphQL','#d8b15a']]},
     {h:'Mobile & DevOps', i:'fa-mobile-screen', c:'sky', items:[['fab fa-apple','iOS / Swift','#ffffff'],['fab fa-android','Android / Kotlin','#3ddc84'],['fas fa-mobile-screen','React Native','#61dafb'],['fas fa-bolt','Expo','#38bdf8'],['fab fa-git-alt','Git','#f1502f'],['fab fa-aws','AWS','#f0d088']]},
   ];
-  const edu = [
-    {t:'University of Colorado Boulder', s:'Master of Science · Software Engineering', n:'Nota final 98.64 · With Distinction', c:'sky'},
-    {t:'Carnegie Mellon University', s:'Master of Science · Cybersecurity', n:'Nota final 97 · #1 EUA em cibersegurança', c:'gold'},
-  ];
-  const certTags = ['Front-End','Back-End','JavaScript','Python','Java','React','Node.js','TypeScript','SQL','Full Stack','Kotlin','Cloud / DevOps'];
   const clients = ['Palacete do Guerreiro','Alva Valley Hotel','São Miguel Jardinagem','Biblioteca Universal','Hotel Copilot'];
   const testimonials = [
-    {q:'Orgulho em poder trabalhar com o Ruben Cipriano. Profissionalismo e dedicação do princípio ao fim.', n:'Palacete do Guerreiro', r:'Cliente · Alojamento turístico', c:'gold'},
     {q:'Trabalho rigoroso e atento ao detalhe. Entregou exatamente o que precisávamos, dentro do prazo.', n:'Alva Valley Hotel', r:'Cliente · Hotelaria 4★', c:'sky'},
     {q:'Comunicação clara e resultados de qualidade. Recomendo sem hesitar a quem procura um parceiro de confiança.', n:'São Miguel Jardinagem', r:'Cliente · Serviços', c:'sky'},
   ];
@@ -534,17 +508,6 @@
         ${g.items.map(it=>`<div class="group p-4 bg-ink rounded-xl border border-line hover:${a.b} transition hover:-translate-y-1 text-center"><i class="${it[0]} text-4xl mb-3 group-hover:scale-110 transition" style="color:${it[2]}"></i><p class="text-white text-sm font-medium">${it[1]}</p></div>`).join('')}
       </div>
     </div>`;}).join('');
-
-  document.getElementById('edu-grid').innerHTML = edu.map(e=>{
-    const a=accent(e.c);
-    return `<div class="relative p-6 bg-gradient-to-br from-panel to-ink rounded-xl border border-line hover:${a.b} transition group reveal">
-      <div class="flex items-start gap-4">
-        <div class="w-16 h-16 bg-gradient-to-br ${a.bg} rounded-xl flex items-center justify-center group-hover:scale-110 transition"><i class="fa-solid fa-graduation-cap text-2xl text-ink"></i></div>
-        <div class="flex-1"><h4 class="font-sora text-lg font-bold mb-1">${e.t}</h4><p class="text-mute text-sm mb-2">${e.s}</p><p class="${a.tx} text-sm font-medium">${e.n}</p></div>
-      </div>
-    </div>`;}).join('');
-
-  document.getElementById('cert-tags').innerHTML = certTags.map((t,i)=>{const c=i%2?'gold':'sky';return `<span class="px-3 py-1.5 bg-${c}/10 text-${c} rounded-full text-xs border border-${c}/30">${t}</span>`;}).join('');
 
   document.getElementById('faq-list').innerHTML = faqs.map(f=>`
     <div class="bg-gradient-to-br from-ink to-panel rounded-2xl border border-line overflow-hidden faq-item reveal">
