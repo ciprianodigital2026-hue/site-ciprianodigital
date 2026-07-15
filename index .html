@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CiprianoDigital — Premium Web Development & Design</title>
+  <meta name="description" content="Ruben Cipriano · Full Stack Developer & Designer. Sites, web apps, apps mobile iOS & Android e produtos digitais premium. React, Node.js, Swift, Kotlin, Python.">
+  <meta property="og:title" content="CiprianoDigital — Premium Web Development & Design">
+  <meta property="og:description" content="Transformo ideias em experiências digitais premium. Produtos reais em produção.">
+  <meta property="og:type" content="website">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'sora': ['Sora', 'sans-serif'],
+            'grotesk': ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            ink: '#060912',
+            panel: '#0c1322',
+            line: '#1c2740',
+            sky: '#0EA5E9',
+            skyd: '#0284c7',
+            gold: '#d8b15a',
+            goldl: '#f0d088',
+            mute: '#94a3b8',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background:#060912; }
+    @keyframes spin360 { to { transform: rotate(360deg); } }
+    .spin-slow { animation: spin360 24s linear infinite; }
+    @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    .floaty { animation: floaty 6s ease-in-out infinite; }
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity:1; transform: translateY(0); }
+    .gold-text { background: linear-gradient(90deg,#f0d088,#d8b15a); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .sky-text { background: linear-gradient(90deg,#38bdf8,#0EA5E9); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .grid-bg { background-image: linear-gradient(rgba(14,165,233,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(14,165,233,.06) 1px, transparent 1px); background-size: 56px 56px; }
+    .card-glow:hover { box-shadow: 0 0 50px rgba(14,165,233,.12); }
+    ::selection { background:#0EA5E9; color:#fff; }
+    .nav-link { position:relative; }
+    .nav-link::after { content:''; position:absolute; left:0; bottom:-4px; width:0; height:2px; background:linear-gradient(90deg,#0EA5E9,#d8b15a); transition:width .3s; }
+    .nav-link:hover::after { width:100%; }
+  </style>
+</head>
+<body class="text-white font-inter antialiased">
+
+<!-- HEADER -->
+<header id="hdr" class="fixed top-0 inset-x-0 z-50 backdrop-blur-xl transition-all" style="background:rgba(6,9,18,.7); border-bottom:1px solid #1c2740;">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#top" class="flex items-center gap-3 group">
+      <div class="relative w-11 h-11">
+        <div class="absolute inset-0 bg-gradient-to-br from-sky to-gold rounded-xl blur opacity-40 group-hover:opacity-70 transition"></div>
+        <div class="relative w-11 h-11 bg-gradient-to-br from-panel to-ink rounded-xl border border-sky/40 flex items-center justify-center">
+          <span class="font-grotesk font-bold text-base sky-text">CD</span>
+        </div>
+      </div>
+      <div class="hidden sm:block leading-none">
+        <span class="font-sora font-bold text-lg text-white">Cipriano</span><span class="font-sora font-bold text-lg gold-text">Digital</span>
+      </div>
+    </a>
+    <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-mute">
+      <a href="#servicos" class="nav-link hover:text-white transition">Serviços</a>
+      <a href="#sobre" class="nav-link hover:text-white transition">Sobre</a>
+      <a href="#projetos" class="nav-link hover:text-white transition">Projetos</a>
+      <a href="#stack" class="nav-link hover:text-white transition">Stack</a>
+      <a href="#faq" class="nav-link hover:text-white transition">FAQ</a>
+    </nav>
+    <div class="flex items-center gap-3">
+      <a href="#contacto" class="hidden sm:inline-flex px-5 py-2 bg-gradient-to-r from-sky to-skyd text-ink font-bold text-sm rounded-lg hover:shadow-[0_0_24px_rgba(14,165,233,.5)] transition">Pedir Orçamento</a>
+      <button class="lg:hidden text-2xl" id="mbtn"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+  <nav id="mmenu" class="lg:hidden hidden border-t border-line px-6 py-4">
+    <div class="flex flex-col gap-4 text-mute font-medium">
+      <a href="#servicos">Serviços</a><a href="#sobre">Sobre</a><a href="#projetos">Projetos</a>
+      <a href="#stack">Stack</a><a href="#faq">FAQ</a>
+      <a href="#contacto" class="px-5 py-2 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-lg text-center">Pedir Orçamento</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg">
+  <div class="absolute top-24 left-10 w-80 h-80 bg-sky rounded-full blur-[160px] opacity-20"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-gold rounded-full blur-[200px] opacity-10"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] bg-skyd rounded-full blur-[220px] opacity-10"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto px-6 text-center pt-28 pb-16">
+    <div class="mb-8 flex justify-center">
+      <div class="relative floaty">
+        <div class="absolute -inset-3 bg-gradient-to-r from-sky via-skyd to-gold rounded-full opacity-30 blur-lg"></div>
+        <div class="relative w-24 h-24 md:w-28 md:h-28">
+          <div class="absolute inset-0 bg-gradient-to-br from-panel to-ink rounded-full border-2 border-sky/50 shadow-[0_0_40px_rgba(14,165,233,.3)]"></div>
+          <svg viewBox="0 0 100 100" class="absolute inset-0 w-full h-full p-7">
+            <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#d8b15a"/></linearGradient></defs>
+            <path d="M68 28 C40 28 24 40 24 50 C24 60 34 72 56 72" stroke="url(#lg)" stroke-width="7" fill="none" stroke-linecap="round"/>
+            <path d="M62 44 L72 50 L62 56" stroke="#d8b15a" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="absolute inset-0 rounded-full border border-dashed border-sky/30 spin-slow"></div>
+        </div>
+      </div>
+    </div>
+
+    <span class="inline-flex items-center gap-2 px-4 py-1.5 mb-6 rounded-full border border-sky/30 bg-sky/5 text-sky text-xs font-medium tracking-wide">
+      <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span> Disponível para novos projetos
+    </span>
+
+    <h1 class="font-sora text-5xl md:text-7xl font-extrabold leading-tight mb-5">
+      <span class="sky-text">Cipriano</span><span class="text-white">Digital</span>
+    </h1>
+    <p class="text-xl md:text-2xl text-slate-200 font-light mb-2">Transformo ideias em experiências digitais</p>
+    <p class="text-base md:text-lg gold-text font-semibold tracking-wide mb-10">Premium Web Development &amp; Design</p>
+
+    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+      <a href="#contacto" class="group px-8 py-4 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-xl hover:shadow-[0_0_34px_rgba(14,165,233,.5)] transition flex items-center gap-2">
+        <i class="fa-solid fa-rocket"></i> Pedir Orçamento
+      </a>
+      <a href="#projetos" class="px-8 py-4 border border-line text-white font-semibold rounded-xl hover:border-gold hover:bg-gold/5 transition flex items-center gap-2">
+        <i class="fa-solid fa-layer-group text-gold"></i> Ver Projetos
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-5 sm:gap-6 max-w-3xl mx-auto">
+      <div><div class="font-sora text-3xl md:text-4xl font-bold sky-text mb-1">7+</div><div class="text-mute text-xs md:text-sm">Anos a programar</div></div>
+      <div><div class="font-sora text-3xl md:text-4xl font-bold gold-text mb-1">2</div><div class="text-mute text-xs md:text-sm">Produtos em produção</div></div>
+      <div><div class="font-sora text-3xl md:text-4xl font-bold sky-text mb-1">5+</div><div class="text-mute text-xs md:text-sm">Clientes satisfeitos</div></div>
+      <div><div class="font-sora text-xl md:text-2xl font-bold gold-text mb-1 mt-1 whitespace-nowrap">PT·EN·ES·FR</div><div class="text-mute text-xs md:text-sm">Multilingue</div></div>
+    </div>
+  </div>
+  <a href="#servicos" class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-sky"><i class="fa-solid fa-chevron-down text-2xl"></i></a>
+</section>
+
+<!-- FAIXA CLIENTES -->
+<section class="relative py-10 bg-ink border-y border-line">
+  <div class="max-w-6xl mx-auto px-6 text-center">
+    <p class="text-mute text-xs uppercase tracking-[0.2em] mb-6">Confiaram no meu trabalho</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-slate-400 font-sora font-semibold text-base md:text-lg" id="clients"></div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="relative py-24 bg-ink">
+  <div class="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky to-transparent opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sky/10 text-sky text-sm font-medium rounded-full mb-4 border border-sky/30"><i class="fa-solid fa-code mr-2"></i>Serviços</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Soluções <span class="sky-text">Digitais</span> Completas</h2>
+      <p class="text-mute text-lg max-w-2xl mx-auto">Do conceito à implementação. Crio produtos que destacam o teu negócio.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="svc-grid"></div>
+    <div class="text-center mt-16 reveal">
+      <a href="#contacto" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-gold to-goldl text-ink font-bold rounded-full hover:shadow-[0_0_40px_rgba(216,177,90,.4)] transition hover:scale-105"><i class="fa-solid fa-paper-plane"></i> Quero um Orçamento Personalizado</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre" class="relative py-24 bg-panel">
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-sky/5 to-transparent"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="relative reveal">
+        <div class="absolute -inset-4 bg-gradient-to-r from-sky via-skyd to-gold rounded-3xl blur-xl opacity-25"></div>
+        <div class="relative bg-gradient-to-br from-ink to-panel rounded-3xl p-8 border border-line">
+          <div class="w-44 h-44 mx-auto mb-6 relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-sky to-gold rounded-full"></div>
+            <div class="absolute inset-1 rounded-full overflow-hidden bg-ink">
+              <img src="assets/ruben.jpg" alt="Ruben Cipriano" class="w-full h-full object-cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\'w-full h-full flex items-center justify-center font-sora text-5xl font-bold sky-text\'>RC</div>'">
+            </div>
+          </div>
+          <div class="text-center">
+            <h3 class="font-sora text-2xl font-bold mb-1">Ruben Cipriano</h3>
+            <p class="text-gold font-medium mb-4">Full Stack Developer &amp; Designer</p>
+            <div class="flex justify-center gap-3">
+              <a href="https://www.linkedin.com/in/ciprianodigital-ciprianodigital-4a0464403" target="_blank" class="w-10 h-10 bg-line/60 rounded-full flex items-center justify-center text-mute hover:bg-sky hover:text-ink transition"><i class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/ciprianodigital2026-matiz" target="_blank" class="w-10 h-10 bg-line/60 rounded-full flex items-center justify-center text-mute hover:bg-white hover:text-ink transition"><i class="fa-brands fa-github"></i></a>
+              <a href="mailto:ciprianodigital2026@gmail.com" class="w-10 h-10 bg-line/60 rounded-full flex items-center justify-center text-mute hover:bg-gold hover:text-ink transition"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-sky to-skyd px-5 py-2.5 rounded-full shadow-lg">
+          <span class="text-ink font-bold text-sm flex items-center gap-2"><i class="fa-solid fa-circle-check"></i> 2 produtos em produção</span>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4 border border-gold/30"><i class="fa-solid fa-user mr-2"></i>Sobre Mim</span>
+        <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Prazer, sou o <span class="gold-text">Ruben</span></h2>
+        <p class="text-lg text-sky font-semibold mb-6 flex items-start gap-2"><i class="fa-solid fa-rocket mt-1"></i> Transformo ideias complexas em experiências digitais simples e eficazes</p>
+        <div class="space-y-4 text-mute text-lg leading-relaxed mb-8">
+          <p>Sou developer full stack e designer, com mais de meia década a construir software em ambiente empresarial e produtos próprios <span class="text-white font-medium">a correr em produção</span>.</p>
+          <p>Experiência sólida em <span class="text-sky">Frontend</span>, <span class="text-sky">Backend</span> e <span class="text-gold">Mobile (iOS & Android)</span>, com domínio de Java, Swift, Kotlin, Python e JavaScript/TypeScript.</p>
+          <p>Da conceção à entrega, garanto que cada detalhe reflete a identidade do teu negócio e oferece uma <span class="text-white font-medium">experiência excecional aos utilizadores</span>.</p>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-8" id="about-tags"></div>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contacto" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-lg hover:shadow-[0_0_30px_rgba(14,165,233,.4)] transition"><i class="fa-solid fa-handshake"></i> Vamos Trabalhar Juntos</a>
+          <a href="#projetos" class="inline-flex items-center gap-2 px-6 py-3 border border-line text-white font-semibold rounded-lg hover:border-gold hover:bg-gold/5 transition"><i class="fa-solid fa-eye text-gold"></i> Ver Projetos</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experiência -->
+    <div class="mt-24 reveal">
+      <h3 class="font-sora text-2xl font-bold text-center mb-12"><i class="fa-solid fa-briefcase text-sky mr-2"></i>Experiência Profissional</h3>
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="relative pl-8 border-l-2 border-sky/40">
+          <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-sky"></span>
+          <div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-sora font-bold text-lg">Fundador &amp; Full Stack Developer</h4><span class="text-gold text-sm font-medium">2023 — presente</span></div>
+          <p class="text-sky text-sm mb-2">CiprianoDigital · Portugal</p>
+          <p class="text-mute text-sm">Conceção e desenvolvimento de produtos digitais próprios e para clientes — web, mobile e SaaS. Design, frontend, backend e deploy ponta-a-ponta.</p>
+        </div>
+        <div class="relative pl-8 border-l-2 border-gold/40">
+          <span class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gold"></span>
+          <div class="flex flex-wrap justify-between gap-2 mb-1"><h4 class="font-sora font-bold text-lg">Software Developer · GenAI · IT Projects</h4><span class="text-gold text-sm font-medium">2018 — 2023</span></div>
+          <p class="text-sky text-sm mb-2">Ambiente empresarial internacional</p>
+          <p class="text-mute text-sm">Desenvolvimento de software e soluções GenAI em Java, Python e JavaScript, em projetos empresariais de larga escala num ambiente internacional.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJETOS -->
+<section id="projetos" class="relative py-24 bg-ink">
+  <div class="absolute inset-0 opacity-30" style="background-image:radial-gradient(circle at 2px 2px, rgba(14,165,233,.12) 1px, transparent 0); background-size:42px 42px;"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4 border border-gold/30"><i class="fa-solid fa-folder-open mr-2"></i>Projetos</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Produtos que <span class="gold-text">já existem</span></h2>
+      <p class="text-mute text-lg max-w-2xl mx-auto">Projetos reais — alguns a correr em produção, outros entregues a clientes.</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="proj-grid"></div>
+    <div class="text-center mt-16 reveal">
+      <p class="text-mute mb-6">Queres ver o teu projeto aqui?</p>
+      <a href="#contacto" class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-full hover:shadow-[0_0_40px_rgba(14,165,233,.4)] transition hover:scale-105"><i class="fa-solid fa-rocket"></i> Começar o Teu Projeto</a>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section id="stack" class="relative py-24 bg-panel overflow-hidden">
+  <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-sky rounded-full blur-[200px] opacity-10"></div>
+  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gold rounded-full blur-[200px] opacity-10"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sky/10 text-sky text-sm font-medium rounded-full mb-4 border border-sky/30"><i class="fa-solid fa-microchip mr-2"></i>Stack</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Tecnologias que <span class="sky-text">domino</span></h2>
+      <p class="text-mute text-lg max-w-2xl mx-auto">Ferramentas modernas para construir soluções rápidas e escaláveis.</p>
+    </div>
+    <div id="stack-groups" class="space-y-14"></div>
+  </div>
+</section>
+
+<!-- TESTEMUNHOS -->
+<section class="relative py-24 bg-ink overflow-hidden">
+  <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-sky rounded-full blur-[200px] opacity-10"></div>
+  <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gold rounded-full blur-[180px] opacity-10"></div>
+  <div class="relative max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-gold/10 text-gold text-sm font-medium rounded-full mb-4 border border-gold/30"><i class="fa-solid fa-quote-left mr-2"></i>Testemunhos</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">O que dizem os <span class="gold-text">clientes</span></h2>
+      <p class="text-mute text-lg max-w-2xl mx-auto">Relações de confiança que se traduzem em resultados.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6" id="testi-grid"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-24 bg-panel">
+  <div class="max-w-3xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sky/10 text-sky text-sm font-medium rounded-full mb-4 border border-sky/30"><i class="fa-solid fa-circle-question mr-2"></i>FAQ</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Perguntas <span class="sky-text">Frequentes</span></h2>
+    </div>
+    <div class="space-y-4" id="faq-list"></div>
+    <div class="text-center mt-12 p-8 bg-gradient-to-r from-ink to-panel rounded-2xl border border-line reveal">
+      <p class="text-mute mb-4">Ainda tens perguntas?</p>
+      <a href="#contacto" class="inline-flex items-center gap-2 text-sky font-semibold hover:text-gold transition"><i class="fa-solid fa-envelope"></i> Fala comigo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto" class="relative py-24 bg-ink overflow-hidden">
+  <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-sky/5 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-96 h-96 bg-gold rounded-full blur-[200px] opacity-10"></div>
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <span class="inline-block px-4 py-1.5 bg-sky/10 text-sky text-sm font-medium rounded-full mb-4 border border-sky/30"><i class="fa-solid fa-paper-plane mr-2"></i>Contacto</span>
+      <h2 class="font-sora text-4xl md:text-5xl font-bold mb-4">Vamos criar algo <span class="gold-text">incrível</span></h2>
+      <p class="text-mute text-lg max-w-2xl mx-auto">Tens um projeto em mente? Conta-me e transformamos a tua visão em realidade.</p>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2 space-y-6 reveal">
+        <div class="relative p-6 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line hover:border-[#25d366]/50 transition">
+          <div class="absolute -top-3 -right-3 w-11 h-11 bg-[#25d366] rounded-full flex items-center justify-center shadow-lg animate-pulse"><i class="fa-brands fa-whatsapp text-xl text-white"></i></div>
+          <h3 class="font-sora text-lg font-bold mb-1">WhatsApp</h3>
+          <p class="text-mute text-sm mb-3">Resposta rápida e direta</p>
+          <a href="https://wa.me/351964194294?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20teus%20servi%C3%A7os." target="_blank" class="inline-flex items-center gap-2 text-[#25d366] font-semibold hover:underline"><i class="fa-brands fa-whatsapp"></i> +351 964 194 294</a>
+        </div>
+        <div class="relative p-6 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line hover:border-sky/50 transition">
+          <div class="absolute -top-3 -right-3 w-11 h-11 bg-gradient-to-br from-sky to-skyd rounded-full flex items-center justify-center shadow-lg"><i class="fa-solid fa-envelope text-lg text-ink"></i></div>
+          <h3 class="font-sora text-lg font-bold mb-1">Email</h3>
+          <p class="text-mute text-sm mb-3">Para orçamentos e propostas</p>
+          <a href="mailto:ciprianodigital2026@gmail.com" class="inline-flex items-center gap-2 text-sky font-semibold hover:underline break-all"><i class="fa-solid fa-at"></i> ciprianodigital2026@gmail.com</a>
+        </div>
+        <div class="p-6 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line">
+          <h3 class="font-sora text-lg font-bold mb-4">Redes</h3>
+          <div class="flex gap-3">
+            <a href="https://www.linkedin.com/in/ciprianodigital-ciprianodigital-4a0464403" target="_blank" class="w-11 h-11 bg-line/60 rounded-xl flex items-center justify-center text-mute hover:bg-[#0077b5] hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/ciprianodigital2026-matiz" target="_blank" class="w-11 h-11 bg-line/60 rounded-xl flex items-center justify-center text-mute hover:bg-white hover:text-ink transition"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:ciprianodigital2026@gmail.com" class="w-11 h-11 bg-line/60 rounded-xl flex items-center justify-center text-mute hover:bg-gold hover:text-ink transition"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="p-6 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line">
+          <div class="flex items-center gap-3 mb-2"><span class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></span><span class="font-semibold">Disponível para projetos</span></div>
+          <p class="text-mute text-sm">Resposta: até 24h · Idiomas: PT · EN · ES · FR</p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3 reveal">
+        <form class="p-8 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line" id="cform">
+          <h3 class="font-sora text-2xl font-bold mb-6">Pedir Orçamento</h3>
+          <div class="grid md:grid-cols-2 gap-5 mb-5">
+            <div><label class="block text-mute text-sm font-medium mb-2">Nome *</label><input name="name" required placeholder="O teu nome" class="w-full px-4 py-3 bg-ink border border-line rounded-lg text-white placeholder-slate-500 focus:border-sky focus:ring-1 focus:ring-sky outline-none transition"></div>
+            <div><label class="block text-mute text-sm font-medium mb-2">Email *</label><input type="email" name="email" required placeholder="email@exemplo.com" class="w-full px-4 py-3 bg-ink border border-line rounded-lg text-white placeholder-slate-500 focus:border-sky focus:ring-1 focus:ring-sky outline-none transition"></div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-5 mb-5">
+            <div><label class="block text-mute text-sm font-medium mb-2">Telefone / WhatsApp</label><input name="phone" placeholder="+351 ..." class="w-full px-4 py-3 bg-ink border border-line rounded-lg text-white placeholder-slate-500 focus:border-sky focus:ring-1 focus:ring-sky outline-none transition"></div>
+            <div><label class="block text-mute text-sm font-medium mb-2">Serviço *</label>
+              <select name="service" required class="w-full px-4 py-3 bg-ink border border-line rounded-lg text-white focus:border-sky focus:ring-1 focus:ring-sky outline-none transition appearance-none cursor-pointer">
+                <option value="">Seleciona um serviço</option>
+                <option>Criação de Sites</option><option>Aplicação Web</option><option>App Mobile (iOS / Android)</option>
+                <option>Frontend</option><option>Backend</option><option>Full Stack</option>
+                <option>UI/UX Design</option><option>APIs &amp; Integrações</option><option>Consultoria</option><option>Outro</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-5">
+            <label class="block text-mute text-sm font-medium mb-2">Orçamento estimado</label>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <label class="cursor-pointer"><input type="radio" name="budget" value="500€ - 1k€" class="hidden peer"><span class="block text-center py-2 px-3 bg-ink border border-line rounded-lg text-mute peer-checked:border-sky peer-checked:text-sky peer-checked:bg-sky/10 transition text-sm">500€ - 1k€</span></label>
+              <label class="cursor-pointer"><input type="radio" name="budget" value="1k€ - 2.5k€" class="hidden peer"><span class="block text-center py-2 px-3 bg-ink border border-line rounded-lg text-mute peer-checked:border-sky peer-checked:text-sky peer-checked:bg-sky/10 transition text-sm">1k€ - 2.5k€</span></label>
+              <label class="cursor-pointer"><input type="radio" name="budget" value="2.5k€ - 5k€" class="hidden peer"><span class="block text-center py-2 px-3 bg-ink border border-line rounded-lg text-mute peer-checked:border-sky peer-checked:text-sky peer-checked:bg-sky/10 transition text-sm">2.5k€ - 5k€</span></label>
+              <label class="cursor-pointer"><input type="radio" name="budget" value="5k€+" class="hidden peer"><span class="block text-center py-2 px-3 bg-ink border border-line rounded-lg text-mute peer-checked:border-sky peer-checked:text-sky peer-checked:bg-sky/10 transition text-sm">5k€+</span></label>
+            </div>
+          </div>
+          <div class="mb-6"><label class="block text-mute text-sm font-medium mb-2">Mensagem *</label><textarea name="message" required rows="5" placeholder="Descreve o teu projeto, objetivos e funcionalidades..." class="w-full px-4 py-3 bg-ink border border-line rounded-lg text-white placeholder-slate-500 focus:border-sky focus:ring-1 focus:ring-sky outline-none transition resize-none"></textarea></div>
+          <button type="submit" class="w-full py-4 bg-gradient-to-r from-sky to-skyd text-ink font-bold text-lg rounded-lg hover:shadow-[0_0_30px_rgba(14,165,233,.5)] hover:scale-[1.01] transition flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp"></i> Enviar via WhatsApp</button>
+          <p class="text-slate-500 text-xs text-center mt-4">Ao enviar, abre o WhatsApp com a tua mensagem pré-preenchida.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="relative py-16 bg-panel">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="relative p-10 md:p-16 bg-gradient-to-br from-ink via-panel to-ink rounded-3xl overflow-hidden border border-line">
+      <div class="absolute top-0 left-1/4 w-96 h-96 bg-sky rounded-full blur-[200px] opacity-15"></div>
+      <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-gold rounded-full blur-[160px] opacity-10"></div>
+      <div class="relative text-center">
+        <h2 class="font-sora text-3xl md:text-4xl font-bold mb-4">Pronto para <span class="sky-text">começar</span>?</h2>
+        <p class="text-mute text-lg mb-8 max-w-2xl mx-auto">Transformo a tua visão em realidade digital. Vamos conversar sobre o próximo projeto.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contacto" class="px-8 py-4 bg-gradient-to-r from-sky to-skyd text-ink font-bold rounded-lg hover:shadow-[0_0_30px_rgba(14,165,233,.4)] transition"><i class="fa-solid fa-rocket mr-2"></i>Começar Projeto</a>
+          <a href="https://wa.me/351964194294" target="_blank" class="px-8 py-4 bg-[#25d366] text-white font-bold rounded-lg hover:shadow-[0_0_30px_rgba(37,211,102,.4)] transition"><i class="fa-brands fa-whatsapp mr-2"></i>WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/351964194294?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20teus%20servi%C3%A7os." target="_blank" aria-label="WhatsApp" class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25d366] rounded-full flex items-center justify-center shadow-[0_4px_24px_rgba(37,211,102,.5)] hover:scale-110 transition group">
+  <span class="absolute inset-0 rounded-full bg-[#25d366] animate-ping opacity-30"></span>
+  <i class="fa-brands fa-whatsapp text-2xl text-white relative"></i>
+  <span class="absolute right-16 px-3 py-2 bg-panel border border-line rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition pointer-events-none">Fala comigo</span>
+</a>
+
+<!-- FOOTER -->
+<footer class="bg-ink border-t border-line py-12">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <a href="#top" class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 bg-gradient-to-br from-sky to-skyd rounded-lg flex items-center justify-center"><span class="font-grotesk font-bold text-ink">CD</span></div>
+          <div><span class="font-sora font-bold text-lg">Cipriano</span><span class="font-sora font-bold text-lg gold-text">Digital</span></div>
+        </a>
+        <p class="text-mute text-sm">Transformo ideias em experiências digitais premium.</p>
+      </div>
+      <div>
+        <h4 class="font-sora font-bold mb-4">Navegação</h4>
+        <div class="grid grid-cols-2 gap-2 text-sm">
+          <a href="#servicos" class="text-mute hover:text-sky transition">Serviços</a>
+          <a href="#projetos" class="text-mute hover:text-sky transition">Projetos</a>
+          <a href="#sobre" class="text-mute hover:text-sky transition">Sobre</a>
+          <a href="#stack" class="text-mute hover:text-sky transition">Stack</a>
+          <a href="#contacto" class="text-mute hover:text-sky transition">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-sora font-bold mb-4">Contacto</h4>
+        <div class="space-y-2">
+          <a href="https://wa.me/351964194294" class="flex items-center gap-2 text-mute hover:text-[#25d366] text-sm transition"><i class="fa-brands fa-whatsapp"></i> +351 964 194 294</a>
+          <a href="mailto:ciprianodigital2026@gmail.com" class="flex items-center gap-2 text-mute hover:text-sky text-sm transition"><i class="fa-solid fa-envelope"></i> ciprianodigital2026@gmail.com</a>
+        </div>
+        <div class="flex gap-3 mt-4">
+          <a href="https://www.linkedin.com/in/ciprianodigital-ciprianodigital-4a0464403" target="_blank" class="w-9 h-9 bg-line/60 rounded-lg flex items-center justify-center text-mute hover:bg-[#0077b5] hover:text-white transition"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://github.com/ciprianodigital2026-matiz" target="_blank" class="w-9 h-9 bg-line/60 rounded-lg flex items-center justify-center text-mute hover:bg-white hover:text-ink transition"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-line pt-8 text-center">
+      <p class="text-mute text-sm">© <span id="yr"></span> CiprianoDigital · Ruben Cipriano. Todos os direitos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ---------- DATA ---------- */
+  const services = [
+    {i:'fa-globe', t:'Criação de Sites', d:'Sites modernos, responsivos e otimizados para SEO.', l:['Design responsivo','SEO otimizado','Performance rápida'], c:'sky'},
+    {i:'fa-window-maximize', t:'Aplicações Web', d:'Dashboards, plataformas e sistemas de gestão.', l:['React & Next.js','PWA & Mobile-first','Tempo real'], c:'gold'},
+    {i:'fa-mobile-screen-button', t:'Apps Mobile (iOS & Android)', d:'Apps nativas e multiplataforma para iPhone e Android, publicadas na App Store e na Play Store.', l:['iOS (Swift) & Android (Kotlin)','React Native / Expo','App Store & Play Store'], c:'sky'},
+    {i:'fa-palette', t:'Frontend Development', d:'Interfaces rápidas e elegantes.', l:['React & Vue','TypeScript','Tailwind & animações'], c:'gold'},
+    {i:'fa-server', t:'Backend Development', d:'APIs robustas, bases de dados e autenticação.', l:['Node.js & Hono','Python','Postgres & SQLite'], c:'sky'},
+    {i:'fa-wand-magic-sparkles', t:'UI/UX Design', d:'Interfaces intuitivas e experiências memoráveis.', l:['Figma','Prototipagem','Design systems'], c:'gold'},
+    {i:'fa-plug', t:'APIs & Integrações', d:'Pagamentos, IA e serviços de terceiros.', l:['REST & GraphQL','Stripe & PayPal','OpenAI / GenAI'], c:'sky'},
+    {i:'fa-layer-group', t:'Full Stack', d:'Desenvolvimento completo ponta-a-ponta.', l:['Web + Mobile','TypeScript','DevOps & Deploy'], c:'gold'},
+    {i:'fa-comments', t:'Consultoria', d:'Assessoria técnica para o teu projeto digital.', l:['Tech consulting','Code review','Mentoria'], c:'sky'},
+  ];
+  const aboutTags = ['React','React Native','Node.js','Python','Java','Swift','iOS','Kotlin','Android','TypeScript','Postgres','GenAI'];
+  const projects = [
+    {i:'fa-book-open', t:'Biblioteca Universal', tag:'Em produção', d:'Plataforma global de leitura (tipo Scribd): ebooks, audiolivros e revistas. Web + mobile, subscrição premium com Stripe e PayPal.', tech:['React','Hono','Drizzle','Stripe'], c:'sky', link:'https://bibliotecauniversal.com'},
+    {i:'fa-hotel', t:'Hotel Copilot', tag:'Em produção', d:'SaaS com IA para hotéis e alojamento local: respostas a hóspedes, traduções e emails automáticos. Multi-idioma e planos por subscrição.', tech:['React','OpenAI','Autumn','Better Auth'], c:'gold', link:'https://hotelcopilot.quest'},
+    {i:'fa-landmark', t:'Palacete do Guerreiro', tag:'Cliente', d:'Site institucional elegante para alojamento turístico, com integração de motor de reservas próprio do cliente.', tech:['HTML','CSS','JS'], c:'sky', link:'#'},
+    {i:'fa-tractor', t:'FarmCipri / Nova Gaia', tag:'Android', d:'Jogos mobile de gestão de quinta que evoluem para império galáctico. WebView + Expo, prontos para a Play Store.', tech:['Kotlin','Expo','HTML5'], c:'gold', link:'#'},
+    {i:'fa-seedling', t:'São Miguel Jardinagem', tag:'Cliente', d:'Site de apresentação para empresa de jardinagem e manutenção de espaços verdes.', tech:['HTML','CSS','JS'], c:'sky', link:'#'},
+    {i:'fa-utensils', t:'Alva Valley', tag:'Cliente', d:'Identidade digital e materiais (cartas, menus) para hotel e bistro 4 estrelas na Serra da Estrela.', tech:['Design','Web'], c:'gold', link:'#'},
+  ];
+  const stack = [
+    {h:'Frontend', i:'fa-palette', c:'sky', items:[['fab fa-react','React','#38bdf8'],['fab fa-vuejs','Vue.js','#41b883'],['fab fa-angular','Angular','#dd1b16'],['fas fa-n','Next.js','#fff'],['fab fa-css3-alt','Tailwind','#38bdf8'],['fab fa-js','TypeScript','#3178c6']]},
+    {h:'Backend', i:'fa-server', c:'gold', items:[['fab fa-node-js','Node.js','#68a063'],['fab fa-python','Python','#f0d088'],['fab fa-java','Java','#e76f00'],['fas fa-database','PostgreSQL','#38bdf8'],['fas fa-leaf','MongoDB','#47a248'],['fas fa-diagram-project','GraphQL','#d8b15a']]},
+    {h:'Mobile & DevOps', i:'fa-mobile-screen', c:'sky', items:[['fab fa-apple','iOS / Swift','#ffffff'],['fab fa-android','Android / Kotlin','#3ddc84'],['fas fa-mobile-screen','React Native','#61dafb'],['fas fa-bolt','Expo','#38bdf8'],['fab fa-git-alt','Git','#f1502f'],['fab fa-aws','AWS','#f0d088']]},
+  ];
+  const clients = ['Palacete do Guerreiro','Alva Valley Hotel','São Miguel Jardinagem','Biblioteca Universal','Hotel Copilot'];
+  const testimonials = [
+    {q:'Trabalho rigoroso e atento ao detalhe. Entregou exatamente o que precisávamos, dentro do prazo.', n:'Alva Valley Hotel', r:'Cliente · Hotelaria 4★', c:'sky'},
+    {q:'Comunicação clara e resultados de qualidade. Recomendo sem hesitar a quem procura um parceiro de confiança.', n:'São Miguel Jardinagem', r:'Cliente · Serviços', c:'sky'},
+  ];
+  const faqs = [
+    {q:'Quanto tempo demora um projeto?', a:'Depende do âmbito. Um site institucional fica pronto em 1 a 3 semanas; uma web app ou app mobile pode levar de 4 a 12 semanas. Defino sempre prazos claros antes de começar.'},
+    {q:'Trabalhas com clientes fora de Portugal?', a:'Sim. Trabalho remotamente com clientes em qualquer país e comunico em Português, Inglês, Espanhol e Francês.'},
+    {q:'Desenvolves apps para iOS?', a:'Sim. Desenvolvo apps para iOS (iPhone/iPad) e para Android. Para iOS uso Swift nativo e, quando faz sentido cobrir as duas plataformas com uma só base de código, uso React Native / Expo — com publicação na App Store e na Play Store.'},
+    {q:'O que está incluído num orçamento?', a:'Design, desenvolvimento, testes, deploy e apoio inicial. Para sites entrego o código completo; para produtos maiores, infraestrutura e manutenção combinam-se à parte.'},
+    {q:'Posso ficar com o código-fonte?', a:'Sim. Entrego sempre o código ao cliente. Tens total controlo e propriedade do que pagaste.'},
+  ];
+
+  /* ---------- RENDER ---------- */
+  const accent = c => c==='gold' ? {b:'border-gold/50',bg:'from-gold to-goldl',tx:'text-gold',sh:'rgba(216,177,90,.15)',bgr:'bg-gold'} : {b:'border-sky/50',bg:'from-sky to-skyd',tx:'text-sky',sh:'rgba(14,165,233,.15)',bgr:'bg-sky'};
+
+  document.getElementById('svc-grid').innerHTML = services.map(s=>{
+    const a=accent(s.c); const isB=s.i.includes('brands'); const icon=isB?'fa-brands '+s.i.replace(' brands',''):'fa-solid '+s.i;
+    return `<div class="group relative p-8 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line hover:${a.b} transition-all duration-500 card-glow hover:-translate-y-2 reveal">
+      <div class="w-14 h-14 bg-gradient-to-br ${a.bg} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition"><i class="${icon} text-2xl text-ink"></i></div>
+      <h3 class="font-sora text-xl font-bold mb-3">${s.t}</h3>
+      <p class="text-mute mb-4">${s.d}</p>
+      <ul class="space-y-2 text-sm text-mute">${s.l.map(x=>`<li class="flex items-center gap-2"><i class="fa-solid fa-check ${a.tx}"></i> ${x}</li>`).join('')}</ul>
+    </div>`;}).join('');
+
+  document.getElementById('about-tags').innerHTML = aboutTags.map((t,i)=>{const c=i%2?'gold':'sky';return `<span class="px-4 py-2 bg-${c}/10 text-${c} rounded-full text-sm border border-${c}/30">${t}</span>`;}).join('');
+
+  document.getElementById('proj-grid').innerHTML = projects.map(p=>{
+    const a=accent(p.c); const href=p.link&&p.link!=='#'?p.link:null;
+    return `<div class="group relative bg-gradient-to-br from-panel to-ink rounded-2xl overflow-hidden border border-line hover:${a.b} transition-all duration-500 card-glow hover:-translate-y-2 reveal">
+      <div class="aspect-video bg-gradient-to-br ${p.c==='gold'?'from-gold/15 to-sky/10':'from-sky/15 to-gold/10'} flex items-center justify-center relative">
+        <i class="fa-solid ${p.i} text-6xl ${a.tx} group-hover:scale-110 transition duration-500"></i>
+        <span class="absolute top-3 right-3 px-2.5 py-1 text-xs font-medium rounded-full ${a.bgr} text-ink">${p.tag}</span>
+      </div>
+      <div class="p-6">
+        <div class="flex flex-wrap gap-2 mb-3">${p.tech.map(t=>`<span class="px-2 py-1 bg-line/50 ${a.tx} text-xs rounded">${t}</span>`).join('')}</div>
+        <h3 class="font-sora text-xl font-bold mb-2">${p.t}</h3>
+        <p class="text-mute text-sm mb-4">${p.d}</p>
+        ${href?`<a href="${href}" target="_blank" class="${a.tx} hover:opacity-80 transition flex items-center gap-1 text-sm font-medium">Visitar <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i></a>`:`<span class="text-mute text-sm flex items-center gap-1"><i class="fa-solid fa-lock text-xs"></i> Projeto privado</span>`}
+      </div>
+    </div>`;}).join('');
+
+  document.getElementById('stack-groups').innerHTML = stack.map(g=>{
+    const a=accent(g.c);
+    return `<div class="reveal">
+      <h3 class="font-sora text-2xl font-bold mb-6 flex items-center gap-3"><span class="w-10 h-10 bg-gradient-to-br ${a.bg} rounded-lg flex items-center justify-center"><i class="fa-solid ${g.i} text-ink"></i></span>${g.h}</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        ${g.items.map(it=>`<div class="group p-4 bg-ink rounded-xl border border-line hover:${a.b} transition hover:-translate-y-1 text-center"><i class="${it[0]} text-4xl mb-3 group-hover:scale-110 transition" style="color:${it[2]}"></i><p class="text-white text-sm font-medium">${it[1]}</p></div>`).join('')}
+      </div>
+    </div>`;}).join('');
+
+  document.getElementById('faq-list').innerHTML = faqs.map(f=>`
+    <div class="bg-gradient-to-br from-ink to-panel rounded-2xl border border-line overflow-hidden faq-item reveal">
+      <button class="faq-btn w-full px-6 py-5 flex items-center justify-between text-left">
+        <span class="font-medium text-lg pr-4">${f.q}</span>
+        <i class="fa-solid fa-chevron-down text-sky transition-transform duration-300 flex-shrink-0"></i>
+      </button>
+      <div class="faq-answer px-6 pb-5 hidden"><p class="text-mute leading-relaxed">${f.a}</p></div>
+    </div>`).join('');
+
+  document.getElementById('clients').innerHTML = clients.map(c=>`<span class="hover:text-white transition">${c}</span>`).join('');
+
+  document.getElementById('testi-grid').innerHTML = testimonials.map(t=>{
+    const a=accent(t.c);
+    return `<div class="relative p-7 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line hover:${a.b} transition reveal">
+      <i class="fa-solid fa-quote-left ${a.tx} text-2xl mb-4"></i>
+      <p class="text-slate-200 leading-relaxed mb-6">"${t.q}"</p>
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-gradient-to-br ${a.bg} rounded-full flex items-center justify-center font-sora font-bold text-ink">${t.n.charAt(0)}</div>
+        <div><p class="font-sora font-semibold text-sm">${t.n}</p><p class="text-mute text-xs">${t.r}</p></div>
+      </div>
+    </div>`;}).join('');
+
+  document.getElementById('clients').innerHTML = clients.map(c=>`<span class="hover:text-white transition">${c}</span>`).join('');
+  document.getElementById('testi-grid').innerHTML = testimonials.map(t=>{
+    const a=accent(t.c);
+    return `<div class="relative p-7 bg-gradient-to-br from-panel to-ink rounded-2xl border border-line hover:${a.b} transition reveal">
+      <i class="fa-solid fa-quote-left ${a.tx} text-2xl mb-4"></i>
+      <p class="text-slate-200 leading-relaxed mb-6">"${t.q}"</p>
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-gradient-to-br ${a.bg} rounded-full flex items-center justify-center font-sora font-bold text-ink">${t.n.charAt(0)}</div>
+        <div><p class="font-sora font-semibold text-sm">${t.n}</p><p class="text-mute text-xs">${t.r}</p></div>
+      </div>
+    </div>`;}).join('');
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ---------- INTERACTIONS ---------- */
+  const mbtn=document.getElementById('mbtn'), mmenu=document.getElementById('mmenu');
+  mbtn.addEventListener('click',()=>{mmenu.classList.toggle('hidden');const ic=mbtn.querySelector('i');ic.classList.toggle('fa-bars');ic.classList.toggle('fa-xmark');});
+  mmenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mmenu.classList.add('hidden');mbtn.querySelector('i').classList.add('fa-bars');mbtn.querySelector('i').classList.remove('fa-xmark');}));
+
+  document.querySelectorAll('.faq-btn').forEach(btn=>btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item'), ans=item.querySelector('.faq-answer'), ic=btn.querySelector('i');
+    const open=!ans.classList.contains('hidden');
+    document.querySelectorAll('.faq-answer').forEach(a=>a.classList.add('hidden'));
+    document.querySelectorAll('.faq-btn i').forEach(i=>i.classList.remove('rotate-180'));
+    if(!open){ans.classList.remove('hidden');ic.classList.add('rotate-180');}
+  }));
+
+  document.getElementById('cform').addEventListener('submit',e=>{
+    e.preventDefault();
+    const d=Object.fromEntries(new FormData(e.target));
+    let m=`Olá Ruben! Pedido de orçamento via site:\n\n`;
+    m+=`Nome: ${d.name||'-'}\nEmail: ${d.email||'-'}\n`;
+    if(d.phone)m+=`Telefone: ${d.phone}\n`;
+    m+=`Serviço: ${d.service||'-'}\n`;
+    if(d.budget)m+=`Orçamento: ${d.budget}\n`;
+    if(d.message)m+=`\nMensagem:\n${d.message}`;
+    window.open(`https://wa.me/351964194294?text=${encodeURIComponent(m)}`,'_blank');
+    e.target.reset();
+  });
+
+  const hdr=document.getElementById('hdr');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>80){hdr.style.background='rgba(6,9,18,.95)';hdr.style.boxShadow='0 4px 30px rgba(0,0,0,.4)';}
+    else{hdr.style.background='rgba(6,9,18,.7)';hdr.style.boxShadow='none';}
+  });
+
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
